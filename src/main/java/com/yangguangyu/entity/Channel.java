@@ -2,18 +2,10 @@ package com.yangguangyu.entity;
 
 import java.io.Serializable;
 
-/**
- * 频道的实体bean
- * @author zhuzg
- *
- */
+
 public class Channel  implements Serializable {
 	
-	
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -5635056991787788655L;
 	
 	private Integer id;

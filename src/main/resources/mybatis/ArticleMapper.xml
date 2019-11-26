@@ -65,5 +65,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM cms_article 
 		  WHERE id=#{value} AND deleted=0
 	</select>
-				
+	<!-- 根据用户获取收藏文章 -->
+	<select id="collections" resultMap="articleMapper">
+	 SELECT a.id,title,picture,channel_id,category_id,hits,commentCnt,created,STATUS,time collectionTime
+	  FROM cms_collection AS b  LEFT JOIN cms_article AS a ON a.`id`=b.`aid`
+	   WHERE deleted=0 AND b.`uid`=#{value} AND STATUS!=2 
+	   ORDER BY b.time DESC 
+	</select>
+	<insert id="addCollection">
+	insert into cms_collection() values(null,#{uid},#{aid},now())
+	</insert>
+	<select id="collectionArticle" resultMap="articleMapper">
+	 SELECT a.id,title,picture,channel_id,category_id,hits,commentCnt,created,STATUS
+	  FROM cms_collection AS b  LEFT JOIN cms_article AS a ON a.`id`=b.`aid`
+	   WHERE deleted=0 AND b.`uid`=#{uid} AND b.aid=#{aid}  AND STATUS!=2 
+	   ORDER BY b.time DESC  limit 1
+	</select>
+	<delete id="delCollection">
+	delete from cms_collection where aid=#{aid} and uid=#{uid}
+	</delete>
 </mapper>

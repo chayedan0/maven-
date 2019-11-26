@@ -195,29 +195,13 @@
 
 
 
-<!-- 底部 -->
-<nav class="navbar navbar-default" style="background:#000099">
+<!-- 底部友情连接 -->
+<nav class="navbar navbar-default" style="background:#CAE1FF">
  <div class="container-fluid" style="text-align:center">
  	<div class="row" style="margin-top:13px">
- 	    <div class="col-md-1"><a href="sohu.com" class="fl"></a></div>
- 		<div class="col-md-1"><a href="sohu.com" class="fl">搜狐</a></div>
- 		<div class="col-md-1"><a href="sohu.com" class="fl">今日头条</a></div>
- 		<div class="col-md-1"><a href="sohu.com" class="fl">网易</a></div>
- 		<div class="col-md-1"><a href="sohu.com" class="fl">新浪中国</a></div>
- 		<div class="col-md-1"><a href="sohu.com" class="fl">百度</a></div>
- 		<div class="col-md-1"><a href="sohu.com" class="fl">饿了么</a></div>
- 		<div class="col-md-1"><a href="sohu.com" class="fl">淘宝</a></div>
- 		<div class="col-md-1"><a href="sohu.com" class="fl">大众点评</a></div>
- 		<div class="col-md-1"><a href="sohu.com" class="fl">豆瓣电影</a></div>
- 		<div class="col-md-1"><a href="sohu.com" class="fl">风火轮</a></div>
- 		<div class="col-md-1"><a href="sohu.com" class="fl"></a></div>
- 	</div>
- 	<div class="row" >
- 		<div class="col-md-1"><a href="sohu.com" class="fl"></a></div>
- 		<div class="col-md-1"><a href="sohu.com" class="fl">饿了么</a></div>
- 		<div class="col-md-1"><a href="sohu.com" class="fl">淘宝</a></div>
- 		<div class="col-md-1"><a href="sohu.com" class="fl">大众点评</a></div>
- 		
+ 		<c:forEach items="${linkList }" var="l">
+ 	    <div class="col-md-1"><a href="${l.http }" target="_blank" style="color: black;font-size: 20px" >${l.name }</a></div>
+ 	    </c:forEach>
  	</div>
  </div>
    <hr width="90%"/>

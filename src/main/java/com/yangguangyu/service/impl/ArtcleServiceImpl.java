@@ -134,5 +134,38 @@ public class ArtcleServiceImpl implements ArticleService {
 		// TODO Auto-generated method stub
 		return articleMapper.update(article);
 	}
+	/* (non-Javadoc)
+	 * @see com.yangguangyu.service.ArticleService#collections(int, java.lang.Integer)
+	 */
+	@Override
+	public PageInfo<Article> collections(int page, Integer id) {
+		// TODO Auto-generated method stub
+		PageHelper.startPage(page, ConstantClass.PAGE_SIZE);
+		return new PageInfo<Article>(articleMapper.collections(id));
+	}
+	/* (non-Javadoc)
+	 * @see com.yangguangyu.service.ArticleService#addCollection(java.lang.Integer, java.lang.Integer)
+	 */
+	@Override
+	public void addCollection(Integer aid, Integer uid) {
+		// TODO Auto-generated method stub
+		articleMapper.addCollection(aid,uid);
+	}
+	/* (non-Javadoc)
+	 * @see com.yangguangyu.service.ArticleService#collectionArticle(java.lang.Integer)
+	 */
+	@Override
+	public Article collectionArticle(Integer aid,Integer uid) {
+		// TODO Auto-generated method stub
+		return articleMapper.collectionArticle(aid,uid);
+	}
+	/* (non-Javadoc)
+	 * @see com.yangguangyu.service.ArticleService#delCollection(java.lang.Integer, java.lang.Integer)
+	 */
+	@Override
+	public void delCollection(Integer aid, Integer uid) {
+		// TODO Auto-generated method stub
+		articleMapper.delCollection(aid,uid);
+	}
 	
 }

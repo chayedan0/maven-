@@ -21,11 +21,12 @@
 			<ul class="nav nav-pills nav-stacked">
 			  <li class="active"><a href="javascript:showFuction('/admin/articles')">文章列表</a></li>
 			  <li><a href="javascript:showFuction('/user/hello')">测试</a></li>
-			  <li><a href="#">发布文章</a></li>
+			  <li><a href="javascript:showFuction('/admin/links')">友情链接管理</a></li>
+			  <li><a href="#">发布文章</a><input type="hidden" name="ifLink" value="${ifLink }"></li>
 			  <li>投票管理
 			  	<ul class="nav nav-pills nav-stacked">
 			  		<li><a href="#">投票列表</a></li>
-			  		<li><a href="#">新建投票</a></li>
+			  		<li><a href="javascript:showFuction('/vote/push')">新建投票</a></li>
 			  	</ul>
 			  </li>
 			  <li class="divider"></li>
@@ -49,6 +50,9 @@ role="navigation">
 <script type="text/javascript">
 $(function(){
 	$("#content").load('/admin/articles');
+	if($("[name=ifLink]").val()==1){
+		showFuction("/admin/links")
+	}
 })
 	function showFuction(url){
 		$("#content").load(url)

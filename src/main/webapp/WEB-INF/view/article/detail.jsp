@@ -20,6 +20,7 @@
 			&nbsp;&nbsp;&nbsp;&nbsp; 发布时间：${article.created} 
 			&nbsp;&nbsp;&nbsp;&nbsp; 频道：${article.channel.name} 
 			&nbsp;&nbsp;&nbsp;&nbsp; 分类：${article.category.name} 
+			&nbsp;&nbsp;&nbsp;&nbsp; <button type="button" class="btn btn-danger" onclick="addCollection(${article.id})">收藏</button>
 		</h5>
 		<div>
 			${article.content}
@@ -36,7 +37,18 @@
 			<!-- 	显示文章的评论 -->
 		</div>
 	</div>
-
-
+	<script type="text/javascript">
+	function addCollection(id){
+		$.post("addCollection",{id:id},function(data){
+			if(data.result==0){
+				alert(data.errorMsg);
+			}else if(data.result==1){
+				alert(data.errorMsg);
+			}else if(data.result==2){
+				alert(data.errorMsg);
+			}
+		},"json")
+	}
+	</script>
 </body>
 </html>

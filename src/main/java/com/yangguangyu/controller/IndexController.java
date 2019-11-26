@@ -16,9 +16,11 @@ import com.github.pagehelper.PageInfo;
 import com.yangguangyu.entity.Article;
 import com.yangguangyu.entity.Category;
 import com.yangguangyu.entity.Channel;
+import com.yangguangyu.entity.Link;
 import com.yangguangyu.service.ArticleService;
 import com.yangguangyu.service.CategoryService;
 import com.yangguangyu.service.ChannelService;
+import com.yangguangyu.service.LinkService;
 
 /**
  * @author 杨光宇
@@ -32,6 +34,8 @@ public class IndexController {
 	CategoryService categoryService;
 	@Autowired
 	ArticleService articleService;
+	@Autowired
+	LinkService linkService;
 	@RequestMapping("channel")
 	public String channel(HttpServletRequest request,
 			@RequestParam(defaultValue="1")int chnId,
@@ -52,6 +56,9 @@ public class IndexController {
 		
 		List<Article> newArticles=articleService.getNewArticles(5);
 		request.setAttribute("newArticles", newArticles);
+		//友情连接
+		List<Link> linkList=linkService.getLinkLists();
+		request.setAttribute("linkList", linkList);
 		return "channelindex";
 	}
 	@RequestMapping(value={"index","/"})
@@ -65,6 +72,8 @@ public class IndexController {
 		
 		request.setAttribute("hotList", hotList);
 		request.setAttribute("newArticles", newArticles);
+		List<Link> linkList=linkService.getLinkLists();
+		request.setAttribute("linkList", linkList);
 		return "index";
 	}
 }

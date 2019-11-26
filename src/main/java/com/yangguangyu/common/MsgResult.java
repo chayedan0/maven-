@@ -4,15 +4,11 @@ import java.io.Serializable;
 
 /**
  * 用于前后端交互的协议
- * @author zhuzg
  *
  */
 public class MsgResult implements Serializable {
 	
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -3270650550789341492L;
 	
 	int result;

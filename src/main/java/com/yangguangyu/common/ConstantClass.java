@@ -2,7 +2,6 @@ package com.yangguangyu.common;
 
 /**
  * 用于保存CMS系统的常量
- * @author zhuzg
  *
  */
 public class ConstantClass {

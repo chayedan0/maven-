@@ -2,17 +2,9 @@ package com.yangguangyu.entity;
 
 import java.io.Serializable;
 
-/**
- * 分类 
- * @author zhuzg
- *
- */
 public class Category implements Serializable {
 	
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1723982065292768684L;
 	
 

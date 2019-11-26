@@ -6,18 +6,8 @@ import java.util.Date;
 import com.yangguangyu.common.ConstantClass;
 
 
-/**
- * 
- * @author zhuzg
- *
- */
 public class User implements Serializable {
-	
-	
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 6460832723994198125L;
 	
 	//

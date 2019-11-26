@@ -155,10 +155,17 @@
 
 
 
-<!-- 底部 -->
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-  </div>
+<!-- 底部友情连接 -->
+<nav class="navbar navbar-default" style="background:#CAE1FF">
+ <div class="container-fluid" style="text-align:center">
+ 	<div class="row" style="margin-top:13px">
+ 		<c:forEach items="${linkList }" var="l">
+ 	    <div class="col-md-1"><a href="${l.http }" target="_blank" style="color: black;font-size: 20px" >${l.name }</a></div>
+ 	    </c:forEach>
+ 	</div>
+ </div>
+   <hr width="90%"/>
+ 	<%@include file="./common/footer.jsp"  %>
 </nav>
 
 <script type="text/javascript">

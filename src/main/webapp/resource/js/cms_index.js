@@ -3,7 +3,6 @@
  */
 
 $(function(){
-		alert("页面加载完成");
 		$(".menu li").click(function(){
 			var url  = $(this).attr("data");
 			//alert(url);
@@ -12,5 +11,8 @@ $(function(){
 	})
 	
 function showArticle(articleId){
+	window.open("/article/showdetail?id="+articleId)
+}
+function showLink(articleId){
 	window.open("/article/showdetail?id="+articleId)
 }

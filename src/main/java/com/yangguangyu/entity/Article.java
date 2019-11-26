@@ -3,17 +3,9 @@ package com.yangguangyu.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * 
- * @author zhuzg
- *
- */
+
 public class Article implements Serializable {
-	
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 6320126833474686896L;
 	
 	private Integer id               ;
@@ -46,6 +38,7 @@ public class Article implements Serializable {
 	
 	//发表时间
 	private Date created          ;
+	private Date collectionTime          ;
 	
 	//最后修改时间
 	private Date updated          ;
@@ -77,6 +70,16 @@ public class Article implements Serializable {
 	}
 	public void setPicture(String picture) {
 		this.picture = picture;
+	}
+	
+	public Date getCollectionTime() {
+		return collectionTime;
+	}
+	public void setCollectionTime(Date collectionTime) {
+		this.collectionTime = collectionTime;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	public Integer getChannelId() {
 		return channelId;
@@ -162,13 +165,21 @@ public class Article implements Serializable {
 	public void setArticleType(int articleType) {
 		this.articleType = articleType;
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return "Article [id=" + id + ", title=" + title + ", content=" + content + ", picture=" + picture
-				+ ", channelId=" + channelId + ", channel=" + channel + ", categoryId=" + categoryId + ", category="
-				+ category + ", userId=" + userId + ", user=" + user + ", hits=" + hits + ", hot=" + hot + ", status="
-				+ status + ", deleted=" + deleted + ", created=" + created + ", updated=" + updated + ", commentCnt="
-				+ commentCnt + ", articleType=" + articleType + "]";
+		return "Article [id=" + id + ", title=" + title + ", content="
+				+ content + ", picture=" + picture + ", channelId=" + channelId
+				+ ", channel=" + channel + ", categoryId=" + categoryId
+				+ ", category=" + category + ", userId=" + userId + ", user="
+				+ user + ", hits=" + hits + ", hot=" + hot + ", status="
+				+ status + ", deleted=" + deleted + ", created=" + created
+				+ ", collectionTime=" + collectionTime + ", updated=" + updated
+				+ ", commentCnt=" + commentCnt + ", articleType=" + articleType
+				+ "]";
 	}
 	@Override
 	public int hashCode() {

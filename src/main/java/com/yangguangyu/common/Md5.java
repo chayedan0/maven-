@@ -4,7 +4,6 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  * 加密的工具类
- * @author zhuzg
  *
  */
 public class Md5 {

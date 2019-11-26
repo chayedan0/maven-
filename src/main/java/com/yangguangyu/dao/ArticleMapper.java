@@ -113,4 +113,29 @@ public interface ArticleMapper {
 			+ "category_id=#{categoryId},status=0,updated=now() WHERE id=#{id}")
 	int update(Article article);
 
+	/**
+	 * @param id
+	 * @return
+	 */
+	List<Article> collections(Integer id);
+
+	/**
+	 * @param aid
+	 * @param uid
+	 */
+	void addCollection(@Param("aid")Integer aid, @Param("uid")Integer uid);
+
+	/**
+	 * @param id
+	 * @param uid 
+	 * @return
+	 */
+	Article collectionArticle(@Param("aid")Integer aid, @Param("uid")Integer uid);
+
+	/**
+	 * @param aid
+	 * @param uid
+	 */
+	void delCollection(@Param("aid")Integer aid, @Param("uid")Integer uid);
+
 }

@@ -231,4 +231,33 @@ public class UserController {
 	public String admin(){
 		return "redirect:/admin/index";
 	}
+	@RequestMapping("collection")
+	public String collection(HttpServletRequest request,@RequestParam(defaultValue="1")int page){
+		User loginUser = (User) request.getSession().getAttribute(ConstantClass.USER_KEY);
+		//用户获取收藏文章
+		PageInfo<Article> pageInfo=articleService.collections(page,loginUser.getId());
+		request.setAttribute("pageInfo", pageInfo);
+		return "user/collection";
+	}
+	@RequestMapping("delCollection")
+	@ResponseBody
+	public Object delCollection(HttpServletRequest request,Integer aid){
+		Article article=articleService.getById(aid);
+		User loginUser  = (User)request.getSession().getAttribute(ConstantClass.USER_KEY);
+		CmsAssert.AssertTrueHtml(article!=null, "文章不存在");
+		Article collectionArticle=articleService.collectionArticle(aid,loginUser.getId());
+		
+		if(collectionArticle==null){
+			return new MsgResult(0,"你没有收藏过该文章",null);
+		}
+		try {
+			articleService.delCollection(aid,loginUser.getId());
+			return new MsgResult(1,"取消收藏成功",null);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new MsgResult(2,"取消收藏失败",null);
+		}
+	}
+	
 }

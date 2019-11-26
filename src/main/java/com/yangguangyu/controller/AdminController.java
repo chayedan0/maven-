@@ -3,6 +3,8 @@
  */
 package com.yangguangyu.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,10 +15,13 @@ import org.springframework.stereotype.Controller;
 
 import com.github.pagehelper.PageInfo;
 import com.yangguangyu.common.CmsAssert;
+import com.yangguangyu.common.ConstantClass;
 import com.yangguangyu.common.MsgResult;
 import com.yangguangyu.entity.Article;
+import com.yangguangyu.entity.Link;
 import com.yangguangyu.entity.User;
 import com.yangguangyu.service.ArticleService;
+import com.yangguangyu.service.LinkService;
 import com.yangguangyu.service.UserService;
 
 /**
@@ -30,6 +35,8 @@ public class AdminController {
 	UserService userService;
 	@Autowired
 	ArticleService articleService;
+	@Autowired
+	LinkService linkService;
 	@RequestMapping("index")
 	public String index(){
 		return "admin/index";
@@ -114,5 +121,39 @@ public class AdminController {
 	@RequestMapping("user/home")
 	public String returnHome(){
 		return "redirect:/user/home";
+	}
+	@RequestMapping("admin/index")
+	public String returnIndex(){
+		return "redirect:/admin/index";
+	}
+
+	@RequestMapping("links")
+	public String links(HttpServletRequest request,@RequestParam(defaultValue="1")int page){
+		PageInfo<Link> pageinfo=linkService.getLinkList(page);
+		request.setAttribute("pageinfo", pageinfo);
+		return "admin/link/links";
+	}
+	@RequestMapping("goAddlinks")
+	public String addlinks(HttpServletRequest request,@RequestParam(defaultValue="1")int page){
+		PageInfo<Link> pageinfo=linkService.getLinkList(page);
+		request.setAttribute("pageinfo", pageinfo);
+		return "admin/link/addlinks";
+	}
+	@RequestMapping("addLink")
+	public String addLink(HttpServletRequest request,Link link){
+		int result=linkService.addLink(link);
+		request.setAttribute("ifLink", "1");
+		return "/admin/index";
+	}
+	@RequestMapping("delLink")
+	@ResponseBody
+	public Object delLink(HttpServletRequest request,Integer id){
+		System.out.println(id);
+		int result=linkService.delLink(id);
+		if(result==1){
+			return new MsgResult(1,"删除成功",null);
+		}else{
+			return new MsgResult(0,"删除失败",null);
+		}
 	}
 }

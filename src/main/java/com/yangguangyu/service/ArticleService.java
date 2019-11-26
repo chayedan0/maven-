@@ -98,4 +98,30 @@ public interface ArticleService {
 	 */
 	int update(Article article);
 
+	/**
+	 * @param page
+	 * @param id
+	 * @return
+	 */
+	PageInfo<Article> collections(int page, Integer id);
+
+	/**
+	 * @param id
+	 * @param id2
+	 */
+	void addCollection(Integer aid, Integer uid);
+
+	/**
+	 * @param id
+	 * @param uid 
+	 * @return
+	 */
+	Article collectionArticle(Integer aid, Integer uid);
+
+	/**
+	 * @param aid
+	 * @param id
+	 */
+	void delCollection(Integer aid, Integer uid);
+
 }
